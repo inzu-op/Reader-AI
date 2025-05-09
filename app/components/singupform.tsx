@@ -17,8 +17,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import {useRouter} from "next/navigation";
 import axios from "axios"
-
-
+import Link from "next/link";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -45,7 +44,7 @@ export function SignupForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const response = await axios.post("/api/user", {
+      const response = await axios.post("/api/user/signup", {
         username: values.username,
         email: values.email,
         password: values.password,
@@ -81,9 +80,6 @@ export function SignupForm() {
                       className="bg-black text-white border-white/20 focus:border-white focus:ring-white"
                     />
                   </FormControl>
-                  <FormDescription className="text-gray-400">
-                    This is your public display name.
-                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -101,9 +97,6 @@ export function SignupForm() {
                       className="bg-black text-white border-white/20 focus:border-white focus:ring-white"
                     />
                   </FormControl>
-                  <FormDescription className="text-gray-400">
-                    We'll never share your email.
-                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -122,9 +115,6 @@ export function SignupForm() {
                       className="bg-black text-white border-white/20 focus:border-white focus:ring-white"
                     />
                   </FormControl>
-                  <FormDescription className="text-gray-400">
-                    Must be at least 8 characters.
-                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -137,6 +127,14 @@ export function SignupForm() {
             </Button>
           </form>
         </Form>
+        <div className="mt-4 text-center">
+          <p className="text-white/80">
+            Already have an account?{" "}
+            <Link href="/login" className="text-white hover:underline font-medium">
+              Login
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
