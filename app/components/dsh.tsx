@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import Navbar from "./Navbar";
-
+import Slider from "./slider";
+import Structure from "./structure";
 
 interface UserData {
   id?: string;
@@ -19,6 +19,7 @@ export default function Dashboard() {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isActive, setIsActive] = useState(true); // 🔄 lifted state
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -63,13 +64,9 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="w-full h-full">
-      <div className="w-[85vw] h-10 flex justify-center items-center">
-        <Navbar></Navbar>
-      </div>
-      <div>
-        <h1>Hello </h1>
-      </div>
+    <div className="flex">
+      <Slider isActive={isActive} setIsActive={setIsActive} />
+      <Structure isActive={isActive} setIsActive={setIsActive} />
     </div>
   );
 }

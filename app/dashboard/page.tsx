@@ -1,5 +1,6 @@
 import React from 'react'
 import Dashboard from '../components/dsh'
+import { ModeToggle } from '../components/modetoggle'
 
 const page = () => {
   return (

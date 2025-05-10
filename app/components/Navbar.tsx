@@ -12,8 +12,8 @@ import { ModeToggle } from "./modetoggle";
 
 const Navbar = () => {
   return (
-    <div className="ml-[220px] flex justify-center">
-      <Menubar className="p-6 w-[550px]  rounded-full shadow-sm bg-[hsl(212.7,26.8%,83.9%)] dark:bg-background border border-gray-200 dark:border-gray-800">
+    <div className="flex justify-center">
+      <Menubar className="p-6 w-[550px]  rounded-full shadow-sm bg-[hsl(212.7,26.8%,83.9%)] dark:bg-background border">
         <div className="flex justify-between items-center w-full">
           <div className="flex space-x-1">
             <MenubarMenu>
