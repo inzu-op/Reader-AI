@@ -16,7 +16,8 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import axios from "axios"; 
+import axios from "axios";
+import SignInWithGoogleButton from "./SignInWithGoogleButton"
 
 const formSchema = z.object({
   email: z.string().email({
@@ -63,6 +64,7 @@ export function LoginForm() {
       console.error(err);
     }
   }
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-black">
@@ -123,6 +125,7 @@ export function LoginForm() {
             >
               Login
             </Button>
+        <SignInWithGoogleButton/>
           </form>
         </Form>
         <div className="mt-4 text-center">
