@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Navbar from "./Navbar";
+
 
 interface UserData {
   id?: string;
@@ -21,17 +23,13 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        console.log("Verifying authentication...");
         const response = await axios.get("/api/user/verify");
-        console.log("Verification response:", response.data);
         if (response.data.success) {
           setUserData(response.data.user);
         } else {
-          console.log("Not authenticated, redirecting to login");
           router.push("/login");
         }
       } catch (error) {
-        console.error("Authentication verification failed", error);
         setError("Authentication failed. Please log in again.");
         router.push("/login");
       } finally {
@@ -65,10 +63,13 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">
-        Welcome {userData?.username}
-      </h1>
+    <div className="w-full h-full">
+      <div className="w-[85vw] h-10 flex justify-center items-center">
+        <Navbar></Navbar>
+      </div>
+      <div>
+        <h1>Hello </h1>
+      </div>
     </div>
   );
 }
